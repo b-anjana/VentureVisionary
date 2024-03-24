@@ -14,7 +14,7 @@ def radius_search():
     params = {
         'keyword': 'hospital',
         'location': '32.909245, -96.769041',
-        'radius': 50000,
+        'radius': 30000,
         'key': 'AIzaSyC9xmK-HdVTMZuQk83FkjGTxTfE_79eZvc'  # Replace with your actual Google Places API key
     }
 
@@ -29,13 +29,6 @@ def radius_search():
     else:
         # Return error message if request failed
         return jsonify({'error': 'Failed to fetch nearby places'})
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
