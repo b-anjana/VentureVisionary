@@ -3,6 +3,7 @@
 import './App.css';
 import { APIProvider } from '@vis.gl/react-google-maps';
 import { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Map,
   AdvancedMarker,
@@ -53,6 +54,24 @@ function initMap() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
+    axios.get("/radius-search")
+    .then(response => {
+      for (let count = 0; count < response.data.results.length; count++) {
+        const location = response.data.results[count];
+        const marker = new window.google.maps.Marker({
+            map,
+            position: { lat: location.geometry.location.lat, lng: location.geometry.location.lng },
+          });
+        window.google.maps.event.addListener(marker, 'click', () => {
+          infoWindow.setContent(location.name);
+          infoWindow.open(map, marker);
+        });
+      }
+    })
+    .catch(error => {
+      console.error("Error fetching locations:", error);
+    });
+
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -70,7 +89,6 @@ window.initMap = initMap;
 export default function MapShow() {
   const [open, setOpen] = useState(false);
   const [userPosition, setUserPosition] = useState(null);
-
   useEffect(() => {
     loadGoogleMapsAPI();
   }, []);
@@ -86,13 +104,32 @@ export default function MapShow() {
               <AdvancedMarker
                 position={userPosition}
                 onClick={() => setOpen(true)}
-              />
+              >
+                <Pin background={"red"} glyphColor={"black"} borderColor={"black"}/>
+              </AdvancedMarker>
             )}
             {open && userPosition && (
               <InfoWindow position={userPosition}>
                 <p>I'm in hell</p>
               </InfoWindow>
             )}
+
+            {/* {locations.map(location => {
+                let pos = { lat: location.geometry.location.lat, lng: location.geometry.location.lng };
+                <div>
+                    <AdvancedMarker
+                        position={pos}
+                        onClick={() => setOpen(true)}
+                    >
+                        <Pin />
+                    </AdvancedMarker>
+                    <InfoWindow position={pos}>
+                    <p>{location.vicinity}</p>
+                    </InfoWindow>
+                </div>
+
+            })} */}
+        
           </Map>
         )}
       </div>
@@ -100,5 +137,3 @@ export default function MapShow() {
   );
 }
   
-
-//export default App;
