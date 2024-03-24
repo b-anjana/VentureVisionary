@@ -13,7 +13,7 @@ const Background = () => {
         if (askMetrics) {
             setMessages([
                 ...messages,
-                { type: 'bot', text: "Bot: Please provide the following metrics: location, price, size, and business type." }
+                { type: 'bot', text: "Hello! Welcome to VentureVisionary! We're here to help you tailor tomorrow's spaces to today's ambitions. To get started, please provide the *location, price, size, buisness type*" }
             ]);
         }
     }, [askMetrics]);
@@ -31,6 +31,20 @@ const Background = () => {
             setMessages(updatedMessages);
         }
     };
+
+    // const handleGenerateReport = () => {
+    //     // Check the value of city and determine which file to download
+    //     if (city === 'Dallas') {
+    //     // Download Property-Report-Dallas.pdf
+    //     window.open('/Property-Report-Dallas.pdf', '_blank');
+    //     } else if (city === 'Chicago') {
+    //     // Download Property-Report-Chicago.pdf
+    //     window.open('/Property-Report-Chicago.pdf', '_blank');
+    //     } else {
+    //     // Handle other cases or provide a default behavior
+    //     console.log("No report available for this city");
+    //     }
+    // };
 
     const handleGenerateReport = () => {
         // Handle generating report functionality here
@@ -83,7 +97,9 @@ const Background = () => {
                                     <label htmlFor="ImportantBuyerInformation" style={{ marginLeft: '10px', fontSize: '20px' }}>Important Buyer Information</label>
                                 </div>
                                 <div className='pt-6 flex items-center justify-center align-items'>
+                                    <a href="Property-Report-Dallas.pdf">
                                     <button className="generate-report-btn" onClick={handleGenerateReport}>Generate Report</button>
+                                    </a>
                                 </div>
                                 {/* <button className="generate-report-btn" onClick={handleGenerateReport}>Generate Report</button> */}
                             </div>
