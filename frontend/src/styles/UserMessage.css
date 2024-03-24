@@ -1,0 +1,16 @@
+.user-message-container {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    right: 0;
+    margin-left: auto;
+    
+}
+
+.user-message {
+    background-color: #2D5046;
+    color: white;
+    margin-right: 0;
+    margin-left: auto;
+}
+

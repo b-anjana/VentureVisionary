@@ -1,16 +1,26 @@
-//import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import MapShow from './Map';
-import LLM from './LLM';
+import Background from './Background';
+import Design from './Design';
+// import MapShow from './Map';
+// import LLM from './LLM';
 
-export default function App() {
+function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    console.log('Toggle dark mode');
+    setDarkMode(prevDarkMode => !prevDarkMode);
+  };
+
   return (
-    <div className='flex gap-x-80'>
-      <LLM />
-      <MapShow />
+    <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
+      <Background />
+      {/* <LLM />
+      <MapShow /> */}
+      <Design darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </div>
   );
 }
-  
 
-//export default App;
+export default App;

@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+    z-index: 200;
+    scrollbar-width: none;
+}
+
+
+.background {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vh;
+    overflow-x: hidden;
+    display: flex;
+    width: auto; /* Adjust as needed */
+}
+
+.intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    width: auto;
+}
+
+.welcome, .caption {
+    font-size: 2.5rem; 
+    font-weight: 600;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.caption {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-top: 1rem;
+}
+
+.messages {
+    position: fixed;
+    bottom: 150px;
+    width: auto;
+    top: 10px; 
+    max-height: calc(100vh - 50px - 10px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    gap: 10px; /* Adjust vertical distance between messages */
+}
+
+@media screen and (min-width: 1100px) {
+    .messages {
+        width: 50%;
+        left: 20px;
+    }
+}
+
+.light-mode {
+    background-color: #D1EBF0; 
+}
+
+.dark-mode {
+    background-color: #3B567C; 
+}
+
+.chat-container {
+    display: flex;
+    height: 100%;
+    width: auto; /* Take up the left half of the screen */
+}
+
+.chatbox-container {
+    flex: 1; /* Take up all available space in the chat container */
+    padding: 20px; /* Adjust padding as needed */
+    background-color: #f5f5f5; /* Example background color for the chatbox */
+    overflow-y: auto; /* Add scroll if necessary */
+    width: auto; /* Adjust as needed */
+}
+
+.messages-container {
+    flex: 1; /* Take up all available space in the chat container */
+    padding: 20px; /* Adjust padding as needed */
+    overflow-y: auto; /* Add scroll if necessary */
+    width: 40%; /* Adjust to 40% of the screen width */
+}
+
+
+.message-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: auto; 
+}
+
+.user {
+    margin-left: auto; /* Align user messages to the right */
+    margin-right: 0; /* Reset margin-right */
+    text-align: right; /* Align text to the right */
+    align-self: flex-end; /* Align user messages to the end of the flex container (right-aligned) */
+    margin-bottom: 10px; /* Add margin at the bottom to separate messages */
+}
+
+.bot {
+    margin-right: auto; /* Align bot messages to the left */
+    margin-left: 0; /* Reset margin-left */
+    text-align: left; /* Align text to the left */
+    align-self: flex-start; /* Align bot messages to the start of the flex container (left-aligned) */
+    margin-bottom: 10px; /* Add margin at the bottom to separate messages */
+}
+
+
+
+
+/* Styles for user messages in light mode */
+.light-mode .user-message {
+    background-color: #2D5046; /* Background color for user messages in light mode */
+    color: #fff; /* Text color for user messages in light mode */
+    border: none; /* Remove border for user messages in light mode */
+    /* Add any other styles you need for user messages in light mode */
+}
+
+/* Styles for bot messages in light mode */
+.light-mode .bot-message {
+    background-color: #fff; /* Background color for bot messages in light mode */
+    color: #2D5046; /* Text color for bot messages in light mode */
+    /* Add any other styles you need for bot messages in light mode */
+}
+
+/* Styles for user messages in dark mode */
+.dark-mode .user-message {
+    background-color: transparent; /* Clear background for user messages in dark mode */
+    color: #479731; /* Text color for user messages in dark mode */
+    border: 1px solid #479731; /* Border for user messages in dark mode */
+    backdrop-filter: blur(5px); /* Apply blur effect */
+    /* Add any other styles you need for user messages in dark mode */
+}
+
+/* Styles for bot messages in dark mode */
+.dark-mode .bot-message {
+    background-color: #479731; /* Background color for bot messages in dark mode */
+    color: #fff; /* Text color for bot messages in dark mode */
+    /* Add any other styles you need for bot messages in dark mode */
+}
+
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.generate-report-btn {
+    background-color: transparent;
+    border: 2px solid #ffffff; /* White border */
+    color: #ffffff; /* White text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer;
+    /* margin-left: ; Moves the button to the right */
+}
+
+.generate-report-btn:hover {
+    background-color: #ffffff; /* White background on hover */
+    color: #000000; /* Black text color on hover */
+}

@@ -1,0 +1,45 @@
+.background {
+    height: 100vh;
+    width: 100%;
+    background-color: #D1EBF0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vh;
+    overflow-x: hidden;
+}
+
+.title {
+    margin-top: 10%;
+}
+
+.welcome, .caption {
+    font-size: 2rem; 
+    font-weight: 600;
+    text-align: center;
+}
+
+.caption {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-top: 1rem;
+}
+
+.messages {
+    width: 60%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.chatbox-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100; /* Set a higher z-index value */
+    /* Add any additional styling */
+}
