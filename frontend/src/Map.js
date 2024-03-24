@@ -131,21 +131,8 @@ export default function MapShow() {
         Set Location
       </button>
     </form>
-    {/* {city.toLowerCase() === 'dallas' ? (
-        <button type="submit" className='ml-2 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-          Set Location
-        </button>
-      ) : city.toLowerCase() === 'chicago' ? (
-        <button type="submit" className='ml-2 mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'>
-          Set Location
-        </button>
-      ) : (
-        <button type="submit" className='ml-2 mt-4 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded'>
-          Hi
-        </button>
-      )} */}
-    <div className='flex-grow' id="map" style={{ width: "75vw" }}>
-    </div>
+      <div className='flex-grow rounded-lg mb-10' id="map" style={{ width: "50vw" }}>
+      </div>
   </div>
   );
  

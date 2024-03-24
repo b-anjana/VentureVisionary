@@ -79,7 +79,7 @@
 .chatbox-container {
     flex: 1; /* Take up all available space in the chat container */
     padding: 20px; /* Adjust padding as needed */
-    background-color: #f5f5f5; /* Example background color for the chatbox */
+    /* background-color: #f5f5f5; Example background color for the chatbox */
     overflow-y: auto; /* Add scroll if necessary */
     width: auto; /* Adjust as needed */
 }

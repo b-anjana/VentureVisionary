@@ -57,32 +57,35 @@ const Background = () => {
                             )
                         )}
                         {!askMetrics && (
-                            <div className="checkbox-container">
+                            <div className="checkbox-container text-white">
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <input type="checkbox" id="TargetAudience" name="TargetAudience" />
-                                    <label htmlFor="TargetAudience" style={{ marginLeft: '10px', fontFamily: 'Times', fontSize: '20px' }}>Target Audience</label>
+                                    <label htmlFor="TargetAudience" style={{ marginLeft: '10px', fontSize: '20px' }}>Target Audience</label>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <input type="checkbox" id="Advantages" name="Advantages" />
-                                    <label htmlFor="Advantages" style={{ marginLeft: '10px', fontFamily: 'Times', fontSize: '20px' }}>Advantages</label>
+                                    <label htmlFor="Advantages" style={{ marginLeft: '10px', fontSize: '20px' }}>Advantages</label>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <input type="checkbox" id="Disadvantages" name="Disadvantages" />
-                                    <label htmlFor="Disadvantages" style={{ marginLeft: '10px', fontFamily: 'Times', fontSize: '20px' }}>Disadvantages</label>
+                                    <label htmlFor="Disadvantages" style={{ marginLeft: '10px', fontSize: '20px' }}>Disadvantages</label>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <input type="checkbox" id="CompetitorInsights" name="CompetitorInsights" />
-                                    <label htmlFor="CompetitorInsights" style={{ marginLeft: '10px', fontFamily: 'Times', fontSize: '20px' }}>Competitor Insights</label>
+                                    <label htmlFor="CompetitorInsights" style={{ marginLeft: '10px', fontSize: '20px' }}>Competitor Insights</label>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <input type="checkbox" id="FradulentInsuranceInsights" name="FradulentInsuranceInsights" />
-                                    <label htmlFor="FradulentInsuranceInsights" style={{ marginLeft: '10px', fontFamily: 'Times', fontSize: '20px' }}>Fradulent Insurance Insights</label>
+                                    <label htmlFor="FradulentInsuranceInsights" style={{ marginLeft: '10px', fontSize: '20px' }}>Fradulent Insurance Insights</label>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <input type="checkbox" id="ImportantBuyerInformation" name="ImportantBuyerInformation" />
-                                    <label htmlFor="ImportantBuyerInformation" style={{ marginLeft: '10px', fontFamily: 'Times', fontSize: '20px' }}>Important Buyer Information</label>
+                                    <label htmlFor="ImportantBuyerInformation" style={{ marginLeft: '10px', fontSize: '20px' }}>Important Buyer Information</label>
                                 </div>
-                                <button className="generate-report-btn" onClick={handleGenerateReport}>Generate Report</button>
+                                <div className='pt-6 flex items-center justify-center align-items'>
+                                    <button className="generate-report-btn" onClick={handleGenerateReport}>Generate Report</button>
+                                </div>
+                                {/* <button className="generate-report-btn" onClick={handleGenerateReport}>Generate Report</button> */}
                             </div>
                         )}
                         <div ref={endOfMessagesRef} />
