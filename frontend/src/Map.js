@@ -11,7 +11,7 @@ import {
   InfoWindow,
 } from "@vis.gl/react-google-maps";
 
-let map, infoWindow;
+let map, geocoder, infoWindow;
 
 function loadGoogleMapsAPI() {
   return new Promise((resolve, reject) => {
@@ -30,6 +30,7 @@ function initMap() {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 6,
   });
+  geocoder = new window.google.maps.Geocoder();
   infoWindow = new window.google.maps.InfoWindow();
 
     // Try HTML5 geolocation.
@@ -89,51 +90,64 @@ window.initMap = initMap;
 export default function MapShow() {
   const [open, setOpen] = useState(false);
   const [userPosition, setUserPosition] = useState(null);
+  const [city, setCity] = useState('');
   useEffect(() => {
-    loadGoogleMapsAPI();
+    loadGoogleMapsAPI().then(() => {
+      initMap();
+    });
   }, []);
+
+  const handleLocationSet = (address) => {
+    geocoder.geocode({ address }, (results, status) => {
+      if (status === 'OK') {
+        map.setCenter(results[0].geometry.location);
+        new window.google.maps.Marker({
+          map,
+          position: results[0].geometry.location,
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLocationSet(city);
+  };
 
 
   return (
-    <APIProvider apiKey='AIzaSyC9xmK-HdVTMZuQk83FkjGTxTfE_79eZvc'>
-      <div style={{ height: "100vh", width: "75vw" }}>
-        <div id="map" style={{ height: "100%" }}></div>
-        {map && (
-          <Map>
-            {userPosition && (
-              <AdvancedMarker
-                position={userPosition}
-                onClick={() => setOpen(true)}
-              >
-                <Pin background={"red"} glyphColor={"black"} borderColor={"black"}/>
-              </AdvancedMarker>
-            )}
-            {open && userPosition && (
-              <InfoWindow position={userPosition}>
-                <p>I'm in hell</p>
-              </InfoWindow>
-            )}
-
-            {/* {locations.map(location => {
-                let pos = { lat: location.geometry.location.lat, lng: location.geometry.location.lng };
-                <div>
-                    <AdvancedMarker
-                        position={pos}
-                        onClick={() => setOpen(true)}
-                    >
-                        <Pin />
-                    </AdvancedMarker>
-                    <InfoWindow position={pos}>
-                    <p>{location.vicinity}</p>
-                    </InfoWindow>
-                </div>
-
-            })} */}
-        
-          </Map>
-        )}
-      </div>
-    </APIProvider>
+    <div className='flex flex-col h-screen'>
+    <form onSubmit={handleSubmit} className='mb-4'>
+      <input
+        type="text"
+        placeholder="Enter a city"
+        className='border p-2 rounded-lg'
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+      />
+      <button type="submit" className='ml-2 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+        Set Location
+      </button>
+    </form>
+    {/* {city.toLowerCase() === 'dallas' ? (
+        <button type="submit" className='ml-2 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+          Set Location
+        </button>
+      ) : city.toLowerCase() === 'chicago' ? (
+        <button type="submit" className='ml-2 mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'>
+          Set Location
+        </button>
+      ) : (
+        <button type="submit" className='ml-2 mt-4 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded'>
+          Hi
+        </button>
+      )} */}
+    <div className='flex-grow' id="map" style={{ width: "75vw" }}>
+    </div>
+  </div>
   );
+ 
 }
   

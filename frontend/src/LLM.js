@@ -2,30 +2,13 @@ import React, {useState, useEffect} from 'react';
 
 
 function LLM() {
-
-  const [data, setData] = useState([{}])
-
-  useEffect(() => {
-        fetch("/members").then(
-          res => res.json()
-        ).then(
-            data => {
-              setData(data)
-              console.log(data)
-            }
-        )
-      }, [])
   return (
     <div className="">
-      {(typeof data.members === "undefined") ? (
-        <p>Loading...</p>
-      ): (
-        data.members.map((member, i) => (
-          <p key={i}>{member}</p>
-        ))
-      )}
+      <button onClick={() => window.location.href='Property-Report-Dallas.pdf'}>Generate Report</button>
+      <button onClick={() => window.location.href='Property-Report-Chicago.pdf'}>Generate Report</button>
     </div>
   );
 }
 
 export default LLM;
+
