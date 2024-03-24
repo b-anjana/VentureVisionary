@@ -5,10 +5,10 @@ import LLM from './LLM';
 
 export default function App() {
   return (
-    <>
-      <MapShow />
+    <div className='flex gap-x-80'>
       <LLM />
-    </>
+      <MapShow />
+    </div>
   );
 }
   
