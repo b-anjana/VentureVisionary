@@ -31,12 +31,6 @@ function initMap() {
   });
   infoWindow = new window.google.maps.InfoWindow();
 
-  const locationButton = document.createElement("button");
-
-  locationButton.textContent = "Pan to Current Location";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -59,7 +53,6 @@ function initMap() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
-  });
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
